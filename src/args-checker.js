@@ -3,17 +3,26 @@
  */
 var args = (function () {
 
-    function expect(args, expectations, callback) {
+    function expect(functionArgs, expectations, callback) {
 
-        // TODO:: check if args is instance of arguments object?
+        // check for own function arguments
+        if (arguments.length < 1) {
+            throw new ArgumentException("There were no arguments passed. Function arguments and expectations are required.");
+        }
 
-        if (arguments.length < 1 || !(expectations.constructor === Array)) {
-            _throwArgumentDataTypeException(2, ['array']);
+        // make sure the `functionArgs` is an instance of javascript `arguments`
+        if (functionArgs.constructor !== Object) {
+            throw new ArgumentException("First argument must be the functions\' `arguments`");
+        }
+
+        // check for the function that was supposed to be checked
+        if (!(expectations.constructor === Array)) {
+            throw new ArgumentException("");
         }
 
         if (expectations.length) {
             for (var i = 0; i <= (expectations.length -1); i++) {
-                var argType = typeof args[i],
+                var argType = typeof functionArgs[i],
                     argExpectations = expectations[i].split('|');
 
                 if ((argType === 'undefined') || (argExpectations.indexOf(argType) === -1)) {
@@ -21,7 +30,7 @@ var args = (function () {
                 }
             }
         } else {
-            //
+            throw new ArgumentException("Second parameter - expectations, is required.");
         }
     }
 
@@ -42,19 +51,15 @@ var args = (function () {
      */
     function _throwArgumentDataTypeException(argumentIndex, mustbe) {
         var an = ['object'],
-            a = ['function', 'string', 'number', 'boolean'],
-            article = '';
+            a = ['function', 'string', 'number', 'boolean'];
 
         for (var i = 0; i <= (mustbe.length -1); i++) {
-            console.log(mustbe[i]);
-            article = (a.indexOf(mustbe) !== -1) ? 'a': 'an';
             if (!validDataType(mustbe[i])) {
                 throw new ArgumentException("Argument number " + argumentIndex + " is not a valid type. only ");
             } else {
-                throw new ArgumentException("Argument number " + argumentIndex + " must be " + article + " " + mustbe);
+                throw new ArgumentException("Argument number " + argumentIndex + " must be " + (a.indexOf(mustbe) !== -1 ? "a": "an") + " " + mustbe);
             }
         }
-
     }
 
     /**
