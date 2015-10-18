@@ -3,63 +3,75 @@
  */
 var args = (function () {
 
+    var gitPagesRepo = "http://www.github.com/karlpatrickespiritu/args-checker-js";
+
     function expect(functionArgs, expectations, callback) {
 
-        // check for own function arguments
-        if (arguments.length < 1) {
-            throw new ArgumentException("There were no arguments passed. Function arguments and expectations are required.");
+        var functionArgs = functionArgs || false,
+            expectations = expectations || false,
+            callback = callback || false;
+
+        if (functionArgs === false) {
+            throw new ArgumentException("Function.arguments is required. \n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
         }
 
-        // make sure the `functionArgs` is an instance of javascript `arguments`
         if (functionArgs.constructor !== Object) {
-            throw new ArgumentException("First argument must be the functions\' `arguments`");
+            throw new ArgumentException("Function arguments must be an instance of a function's arguments.\n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
         }
 
-        // check for the function that was supposed to be checked
-        if (!(expectations.constructor === Array)) {
-            throw new ArgumentException("");
+        if ((expectations === false) || (expectations.length < 1)) {
+            throw new ArgumentException("Expectations are required.\n\nFor more info, go to " + gitPagesRepo + "#expectations");
         }
 
-        if (expectations.length) {
-            for (var i = 0; i <= (expectations.length -1); i++) {
-                var argType = typeof functionArgs[i],
-                    argExpectations = expectations[i].split('|');
+        if (expectations.constructor !== Array) {
+            throw new ArgumentException("Expectations must be an array of string expectations, " + typeof expectations + " was passed.\n\nFor more info, go to " + gitPagesRepo + "#expectations");
+        }
 
-                if ((argType === 'undefined') || (argExpectations.indexOf(argType) === -1)) {
-                    _throwArgumentDataTypeException((i+1), argExpectations);
+        // =======PLAN=========
+        // 
+        // 1. check if expectations are valid. see next section.
+        // 2. check if passed arguments === expectations
+        //    - check also if types of both are equal (or in array of the expectations)
+        //       ex: args[1, 'imastring', function(){}] === expectations['int|function|boolean', 'string', 'function'] 
+        // 3. we can now assume that everyting is okay. everything is equal.
+        // 4. check if callback is present, and pass the return object info in callback
+        // 5 ....... TODO 
+
+        // Valid Expectations = [string, object, number, function, boolean, *] 
+        // * means any of the data types
+
+        // check if expectations are valid.
+        for (var i = 0; i <= (expectations.length -1); i++) {
+            if (typeof expectations[i] !== 'string') {
+                throw new ArgumentException("Expectations must only contain valid string expectations, " + typeof expectations[i] + " was detected - `" + expectations[i] + "`. \n\nFor more info, go to " + gitPagesRepo + "#expectations");
+            }
+
+            var argumentExpectations = expectations[i].split('|');
+
+            for (var j = 0; j <= (argumentExpectations.length -1); j++) {
+                if (!validExpectation(argumentExpectations[j])) {
+                    throw new ArgumentException("A malformed string of expectation was detected - `" + argumentExpectations[j] + "`. \n\nFor more info, go to " + gitPagesRepo + "#expectations");
                 }
             }
-        } else {
-            throw new ArgumentException("Second parameter - expectations, is required.");
+        }
+
+        // check expectations would pass
+        if (functionArgs.length < 1) {
+            throw new ArgumentException("There we\'re no arguments passed. Function expects arguments to be: (" + expectations.toString().split(',').join(', ') + "). \n\nFor more info, go to " + gitPagesRepo + "#");
+        }
+
+        if (functionArgs.length !== expectations.length) {
+            throw new ArgumentException("The number of function arguments does not match the number of expected arguments. ");
         }
     }
 
     /**
-     * Checks if string passed is a valid javascript data type.
+     * Checks if string passed is a valid string expectation.
      * @param {string}
      * @returns {boolean}
      */
-    function validDataType(dataType) {
-        return ['object', 'function', 'string', 'number', 'boolean'].indexOf(dataType) !== -1;
-    }
-
-    /**
-     * Throws an argument exception if the function had an invalid argument data type
-     * @param {integer}
-     * @param {array}
-     * @private
-     */
-    function _throwArgumentDataTypeException(argumentIndex, mustbe) {
-        var an = ['object'],
-            a = ['function', 'string', 'number', 'boolean'];
-
-        for (var i = 0; i <= (mustbe.length -1); i++) {
-            if (!validDataType(mustbe[i])) {
-                throw new ArgumentException("Argument number " + argumentIndex + " is not a valid type. only ");
-            } else {
-                throw new ArgumentException("Argument number " + argumentIndex + " must be " + (a.indexOf(mustbe) !== -1 ? "a": "an") + " " + mustbe);
-            }
-        }
+    function validExpectation(stringDataType) {
+        return ['object', 'function', 'string', 'number', 'boolean', '*'].indexOf(stringDataType) !== -1;
     }
 
     /**
@@ -67,8 +79,8 @@ var args = (function () {
      * @param {string}
      */
     function ArgumentException(message) {
-        this.message = message;
         this.name = "ArgumentException";
+        this.message = message;
         this.toString = function() {
             return this.name + ": " + this.message;
         };

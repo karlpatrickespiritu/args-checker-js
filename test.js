@@ -1,14 +1,13 @@
-(function (argschecker) {
-    "use strict";
+(function (args) {
+	"use strict";
 
-    function run(name, numbers, age, callback) {
-        // if callback function not set, and if expectations not met, args checker will immediately throw an exception
-        argschecker.expect(arguments);
-        // argschecker.expect(arguments, ['string', 'object|number', 'number', 'function']);
+    function run(stringOfFunction, booleanOrObjectOrAll, anumber, afunction) {
+    	
+    	args.expect(arguments, ['string|function', 'boolean|object|*', 'number', 'function']);
 
-        console.log("all arguments passed!");
+        console.log("\n\nPassed!");
     }
 
-    //run({}, [], 'string', 100);
     run();
+    // run({}, [], 'string', 100);
 })(args);
