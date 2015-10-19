@@ -61,7 +61,24 @@ var args = (function () {
         }
 
         if (functionArgs.length !== expectations.length) {
-            throw new ArgumentException("The number of function arguments does not match the number of expected arguments. ");
+            throw new ArgumentException("The number of function arguments does not match the number of expected arguments. \n\nFor more info, go to " + gitPagesRepo + "#");
+        }
+
+        // console.log(functionArgs.length, expectations.length);
+        for (var i = 0; i <= (functionArgs.length -1); i++) {
+            var argumentExpectations = expectations[i].split('|');
+
+            /*console.log(typeof functionArgs[i])
+            console.log(argumentExpectations[typeof functionArgs] !== 'undefined');
+            console.log(argumentExpectations[typeof functionArgs], typeof functionArgs);*/
+
+            /*if (argumentExpectations['*'] !== 'undefined') {
+                continue;
+            }*/
+
+            if (argumentExpectations.indexOf(typeof functionArgs) !== 'undefined') {
+                throw new ArgumentException("Argument number " + (i + 1) + " must be " + expectations[i]);
+            }
         }
     }
 
