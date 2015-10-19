@@ -18,7 +18,8 @@ var args = (function () {
 
         var functionArgs = functionArgs || false,
             expectations = expectations || false,
-            callback = callback || false;
+            callback = callback || false,
+            results = {};
 
         /*==== some basic checks =====*/
 
@@ -75,6 +76,9 @@ var args = (function () {
                 throw new ArgumentException("Argument number " + (i + 1) + " must be " + expectations[i]);
             }
         }
+
+        // ...we can now assume that all argument are in line with what the expectations are :)
+        return true;
     }
 
     /**
