@@ -3,11 +3,13 @@
 
     function run(stringOrFunction, booleanOrObjectOrAll, anumber, afunction) {
     	
-    	args.expect(arguments, ['string|function', 'boolean|object|*', 'number', 'function']);
+    	args.expect(arguments, ['boolean|string', '*', 'function|object', 'number']);
 
-        console.log("\n\nPassed!");
+        console.log("\n\nArguments passed!");
     }
 
-    run('1', '1', 1 , 4);
-    // run({}, [], 'string', 100);
+    // run({}, 1, 200, false); //---> this shouldn't pass
+
+    run(true, 1, {}, 1); //---> this should pass
+
 })(args);
