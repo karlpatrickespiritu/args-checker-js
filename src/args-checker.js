@@ -21,7 +21,10 @@ var args = (function () {
         var functionArgs = functionArgs || false,
             expectations = expectations || false,
             callback = callback || false,
-            results = {};
+            results = {
+                errors: [],
+                passed: true
+            };
 
         /*==== some basic checks =====*/
 
@@ -75,10 +78,19 @@ var args = (function () {
             }
 
             if (argumentExpectations.indexOf(typeof functionArgs[i]) === -1) {
-                results[i + 1] = expectations[i];
-                
+                var message = "Argument number " + (i + 1) + " must be " + expectations[i] + ", " + typeof functionArgs[i] + " was passed.";
+
+                // add results
+                results.passed = false;
+                results.errors[i + 1] = {
+                    passed: functionArgs[i],
+                    passedDataType: typeof functionArgs[i],
+                    expected: argumentExpectations,
+                    message: message
+                };
+
                 if (callback === false) {
-                    throw new ArgumentException("Argument number " + (i + 1) + " must be " + expectations[i] + ". \n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
+                    throw new ArgumentException(message + ". \n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
                 }
             }
         }

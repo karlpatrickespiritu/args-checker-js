@@ -43,12 +43,12 @@
         * on the third parameter. Or you can pass a callback function to get the results/errors
         * thrown by args-checker.
         * */
-        args.expect(arguments, ['string|function', 'number', 'boolean', '*'], function(results) {
+        args.expect(arguments, ['string|function', 'number|boolean', 'boolean', '*'], function(results) {
             console.log(results);
         });
 
         // do something here...
-        console.log("\n\nfunction `run2` arguments passed!");
+        // console.log("\n\nfunction `run2` arguments passed!");
     }
 
     // this should NOT PASS, exception thrown since params must match the expectations
@@ -59,12 +59,12 @@
 
     // this should NOT PASS, second parameter must be a number. 
     // But this won't throw any exception since a callback function was passed in the args.expect() function.
-    run2(function() {}, 'a string', false, []);
+    // run2(function() {}, 'this is a string', {}, []);
 
     // this should PASS. And results are passed on the callback function (3rd param on args.expect)
     // run2(function() {}, 200, true, ['an', 'array']);
 
     // this should PASS. And results are passed on the callback function (3rd param on args.expect)
-    // run2('a string', 200, true, { an: 'object' });
+    run2({}, 200, true, { an: 'object' });
 
 })(args);
