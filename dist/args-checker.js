@@ -5,6 +5,8 @@
  */
 var args = (function () {
 
+    "use strict";
+
     // TODO: git pages docs
     var gitPagesRepo = "http://www.github.com/karlpatrickespiritu/args-checker-js";
 
@@ -58,11 +60,11 @@ var args = (function () {
         /*==== check expectations would pass ====*/
 
         if (functionArgs.length < 1) {
-            throw new ArgumentException("There we\'re no arguments passed. Function expects arguments to be: (" + expectations.toString().split(',').join(', ') + "). \n\nFor more info, go to " + gitPagesRepo + "#");
+            throw new ArgumentException("There we\'re no arguments passed. Function expects arguments to be: (" + expectations.toString().split(',').join(', ') + "). \n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
         }
 
         if (functionArgs.length !== expectations.length) {
-            throw new ArgumentException("The number of function arguments does not match the number of expected arguments. \n\nFor more info, go to " + gitPagesRepo + "#");
+            throw new ArgumentException("The number of function arguments does not match the number of expected arguments. \n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
         }
 
         for (var i = 0; i <= (functionArgs.length -1); i++) {
@@ -73,8 +75,22 @@ var args = (function () {
             }
 
             if (argumentExpectations.indexOf(typeof functionArgs[i]) === -1) {
-                throw new ArgumentException("Argument number " + (i + 1) + " must be " + expectations[i]);
+                results[i + 1] = expectations[i];
+                
+                if (callback === false) {
+                    throw new ArgumentException("Argument number " + (i + 1) + " must be " + expectations[i] + ". \n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
+                }
             }
+        }
+
+        /*==== check callback and execute. ====*/
+
+        if (callback !== false) {
+            if (typeof callback !== 'function') {
+                throw new ArgumentException("Callback function must be a function, " + typeof callback + " was passed. \n\nFor more info, go to " + gitPagesRepo + "#callback-function");
+            }
+
+            callback(results);
         }
 
         // ...we can now assume that all argument are in line with what the expectations are :)
