@@ -135,3 +135,10 @@ var args = (function () {
     }
 
 })();
+
+// mocha testing
+if (typeof exports === 'undefined') {
+    exports = {}
+}
+exports = exports || {};
+exports.args = args;

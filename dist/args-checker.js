@@ -135,3 +135,5 @@ var args = (function () {
     }
 
 })();
+
+exports.args = args || {};
