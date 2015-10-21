@@ -86,7 +86,7 @@ var args = (function () {
                 results.errors['argument ' + (i += 1)] = {
                     passedData: functionArgs[i],
                     passedDataType: typeof functionArgs[i],
-                    expected: argumentExpectations,
+                    expects: argumentExpectations,
                     message: message
                 };
 
