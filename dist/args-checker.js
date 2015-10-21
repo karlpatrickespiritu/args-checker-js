@@ -131,9 +131,15 @@ var args = (function () {
     }
 
     return {
-        expect: expect
+        expect: expect,
+        ArgumentException: ArgumentException
     }
 
 })();
 
-exports.args = args || {};
+// mocha testing
+if (typeof exports === 'undefined') {
+    exports = {}
+}
+exports = exports || {};
+exports.args = args;

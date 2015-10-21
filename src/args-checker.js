@@ -131,7 +131,8 @@ var args = (function () {
     }
 
     return {
-        expect: expect
+        expect: expect,
+        ArgumentException: ArgumentException
     }
 
 })();
