@@ -1,2 +1,2 @@
 # args-checker-js
-:heavy_check_mark: a function arguments checker in javascript.
+a function's arguments checker in javascript. :heavy_check_mark:
