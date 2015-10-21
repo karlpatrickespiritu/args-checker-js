@@ -11,10 +11,11 @@ var args = (function () {
     var gitPagesRepo = "http://www.github.com/karlpatrickespiritu/args-checker-js";
 
     /**
-     * Checks the arguments and expectations if valid
+     * Checks the arguments and expectations if valid.
      * @param {Array}
      * @param {Array}
-     * @param {mixed}
+     * @param {Array}
+     * @returns {boolean}
      */
     function expect(functionArgs, expectations, callback) {
 
@@ -22,7 +23,7 @@ var args = (function () {
             expectations = expectations || false,
             callback = callback || false,
             results = {
-                errors: [],
+                errors: {},
                 passed: true
             };
 
@@ -82,8 +83,8 @@ var args = (function () {
 
                 // add results
                 results.passed = false;
-                results.errors[i + 1] = {
-                    passed: functionArgs[i],
+                results.errors['argument ' + (i += 1)] = {
+                    passedData: functionArgs[i],
                     passedDataType: typeof functionArgs[i],
                     expected: argumentExpectations,
                     message: message
@@ -105,8 +106,7 @@ var args = (function () {
             callback(results);
         }
 
-        // ...we can now assume that all argument are in line with what the expectations are :)
-        return true;
+        return results.passed;
     }
 
     /**
