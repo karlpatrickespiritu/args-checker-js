@@ -22,7 +22,7 @@ var args = (function () {
             expectations = expectations || false,
             callback = callback || false,
             results = {
-                errors: [],
+                errors: {},
                 passed: true
             };
 
@@ -46,14 +46,14 @@ var args = (function () {
 
         /*==== check if expectations are valid. ====*/
 
-        for (var i = 0; i <= (expectations.length -1); i++) {
+        for (var i = 0; i <= (expectations.length - 1); i++) {
             if (typeof expectations[i] !== 'string') {
                 throw new ArgumentException("Expectations must only contain valid string expectations, " + typeof expectations[i] + " was detected - `" + expectations[i] + "`. \n\nFor more info, go to " + gitPagesRepo + "#expectations");
             }
 
             var argumentExpectations = expectations[i].split('|');
 
-            for (var j = 0; j <= (argumentExpectations.length -1); j++) {
+            for (var j = 0; j <= (argumentExpectations.length - 1); j++) {
                 if (!validExpectation(argumentExpectations[j])) {
                     throw new ArgumentException("A malformed string of expectation was detected - `" + argumentExpectations[j] + "`. \n\nFor more info, go to " + gitPagesRepo + "#expectations");
                 }
@@ -70,7 +70,7 @@ var args = (function () {
             throw new ArgumentException("The number of function arguments does not match the number of expected arguments. \n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
         }
 
-        for (var i = 0; i <= (functionArgs.length -1); i++) {
+        for (var i = 0; i <= (functionArgs.length - 1); i++) {
             var argumentExpectations = expectations[i].split('|');
 
             if (argumentExpectations.indexOf('*') !== -1) {
@@ -82,7 +82,7 @@ var args = (function () {
 
                 // add results
                 results.passed = false;
-                results.errors[i + 1] = {
+                results.errors['argument ' + (i += 1)] = {
                     passed: functionArgs[i],
                     passedDataType: typeof functionArgs[i],
                     expected: argumentExpectations,
@@ -90,7 +90,7 @@ var args = (function () {
                 };
 
                 if (callback === false) {
-                    throw new ArgumentException(message + ". \n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
+                    throw new ArgumentException(message + "\n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
                 }
             }
         }
@@ -105,8 +105,7 @@ var args = (function () {
             callback(results);
         }
 
-        // ...we can now assume that all argument are in line with what the expectations are :)
-        return true;
+        return results.passed;
     }
 
     /**
@@ -125,7 +124,7 @@ var args = (function () {
     function ArgumentException(message) {
         this.name = "ArgumentException";
         this.message = message;
-        this.toString = function() {
+        this.toString = function () {
             return this.name + ": " + this.message;
         };
     }
