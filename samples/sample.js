@@ -58,7 +58,7 @@
 
     // this should NOT PASS, second parameter must be a number. 
     // But this won't throw any exception since a callback function was passed in the args.expect() function.
-    run2(true);
+    run2(function() {}, 'a string', false, []);
 
     // this should PASS. And results are passed on the callback function (3rd param on args.expect)
     // run2(function() {}, 200, true, ['an', 'array']);
