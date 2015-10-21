@@ -1,4 +1,4 @@
-(function (args) {
+(function (window, undefined) {
 	"use strict";
 
     /**
@@ -66,4 +66,4 @@
     // this should PASS. And results are passed on the callback function (3rd param on args.expect)
     // run2('a string', 200, true, { an: 'object' });
 
-})(args);
+})(window, undefined);

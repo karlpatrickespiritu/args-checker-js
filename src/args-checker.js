@@ -1,10 +1,10 @@
 /**
- * A lightweight arguments checker in javascript.
+ * args-checker-js - a lightweight function's arguments checker in javascript.
  *
- * @author karlpatrickespiritu <https://github.com/karlpatrickespiritu>, <wiwa.espiritu@gmail.com>
+ * Copyright (c) 2015 Karl Patrick Tan Espiritu <https://github.com/karlpatrickespiritu>
+ * MIT Licensed
  */
 var args = (function () {
-
     "use strict";
 
     // TODO: git pages docs
@@ -137,9 +137,6 @@ var args = (function () {
 
 })();
 
-// mocha testing
-if (typeof exports === 'undefined') {
-    exports = {}
+if (typeof exports !== 'undefined') {
+    exports.args = args;
 }
-exports = exports || {};
-exports.args = args;

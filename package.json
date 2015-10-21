@@ -1,7 +1,7 @@
 {
   "name": "args-checker-js",
   "version": "0.0.1",
-  "description": "a function arguments checker in javascript.",
+  "description": "a lightweight javascript function's arguments checker",
   "main": "gulpfile.js",
   "dependencies": {
     "del": "^2.0.2",
