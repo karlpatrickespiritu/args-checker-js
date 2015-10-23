@@ -10,8 +10,9 @@ a lightweight function's arguments checker in javascript. :heavy_check_mark:
 ```sh
 $ bower install args-checker-js
 ```
-### The Problem
-As we all know, Javascript doesn't implement strict typing unlike other languages. So in order to force javascript to do so, we'll do something like this:
+---
+# The Problem
+As we all know, Javascript doesn't suppor strict typing unlike other languages. So in order to force javascript to do so, we'll do something like this:
 ```javascript
 function someFunc(name, history, callback) {
     if (typeof name !== 'string') {
@@ -28,9 +29,8 @@ function someFunc(name, history, callback) {
 }
 ```
 
-### What args-checker aims to solve
----
-But, wouldn't it be cool if javascript did have strict typing? Say, something like this:
+# What args-checker aims to solve
+Wouldn't it be cool if javascript did support strict typing? Say, something like this:
 ```javascript
 function someFunc(String name, Object history, Function callback) {
     // do something...
