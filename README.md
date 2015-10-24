@@ -1,5 +1,7 @@
 # args-checker-js
 
+[![Build Status](https://travis-ci.org/karlpatrickespiritu/args-checker-js.svg?branch=master)](https://travis-ci.org/karlpatrickespiritu/args-checker-js)
+
 a lightweight function's arguments checker in javascript. :heavy_check_mark:
 
 ### Version
