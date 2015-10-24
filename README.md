@@ -31,7 +31,7 @@ function run(stringOrNumber, anObject, aFunction) {
 }
 ```
 ### The Solution
-Args-checker-js is a tiny javascript object that's designed to fix this problem. This has solved mine, so i'm hoping it might solve yours. :relaxed: 
+Args-checker-js is a tiny javascript object that's designed to fix this problem. This has solved mine, so i'm hoping it can solve yours. :relaxed: 
 
 Here's how..
 ```javascript
