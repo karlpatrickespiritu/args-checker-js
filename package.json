@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "a lightweight javascript function's arguments checker",
   "main": "gulpfile.js",
+  "scripts": {
+    "test": "mocha"
+  },
   "dependencies": {
     "del": "^2.0.2",
     "gulp-concat": "^2.6.0",
