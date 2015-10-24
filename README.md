@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/karlpatrickespiritu/args-checker-js.svg?branch=master)](https://travis-ci.org/karlpatrickespiritu/args-checker-js)
 
+[![npm version](https://badge.fury.io/js/args-checker-js.svg)](https://badge.fury.io/js/args-checker-js)
+
 a lightweight function's arguments checker in javascript. :heavy_check_mark:
 
 ### Version
