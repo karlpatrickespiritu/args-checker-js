@@ -39,7 +39,7 @@ function run(stringOrNumber, anObject, aFunction) {
 ### The Solution
 Args-checker-js is a tiny javascript object that's designed to fix this problem. This has solved mine, so i'm hoping it can solve yours. 
 
-Here's how..
+Here's a sample snippet..
 ```javascript
 function run(stringOrNumber, anObject, aFunction) {
 
@@ -49,13 +49,25 @@ function run(stringOrNumber, anObject, aFunction) {
 }
 ```
 
+### Usage
+for web projects, include args-checker.
+```html
+<script src="dist/args-checker.min.js"></script>
+```
+for node projects, require args-checker.
+```javascript
+var args = require('args-checker');
+```
+
+See **[Examples]**
+
 ### Maintainers
  - [@karlpartrickespiritu]
  - and [contributors]
-
 ### License
 (C) [Karl Patrick Espiritu] 2015, released under the MIT license
 
+[Examples]: <https://github.com/karlpatrickespiritu/args-checker-js/tree/master/samples>
 [Karl Patrick Espiritu]: <http://github.com/karlpatrickespiritu>
 [@karlpartrickespiritu]: <http://github.com/karlpatrickespiritu>
 [contributors]: <https://github.com/karlpatrickespiritu/args-checker-js/graphs/contributors>
