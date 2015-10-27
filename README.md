@@ -64,6 +64,7 @@ See **[Examples]**
 ### Maintainers
  - [@karlpartrickespiritu]
  - and [contributors]
+ 
 ### License
 (C) [Karl Patrick Espiritu] 2015, released under the MIT license
 
