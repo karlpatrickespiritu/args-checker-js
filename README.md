@@ -48,9 +48,11 @@ function run(stringOrNumber, anObject, aFunction) {
 	// arguments are now valid. do something here..
 }
 ```
+
 ### Maintainers
  - [@karlpartrickespiritu]
  - and [contributors]
+ - 
 ### License
 (C) [Karl Patrick Espiritu] 2015, released under the MIT license
 
