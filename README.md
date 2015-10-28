@@ -20,7 +20,8 @@ via [bower]
 $ bower install args-checker-js
 ```
 
-### The Problem
+The Problem
+--------
 We all know javascript doesn't support strict typing unlike other languages. So if a function, like the one shown below, expects it's arguments to be of certain types, we must implement type checking inside the function to make sure that the arguments are of valid types. This type checking can easily make our code too long. And imagine if the function expects too many arguments (although it's a bad practice)?
 
 ```javascript
@@ -41,13 +42,17 @@ function run(stringOrNumber, anObject, aFunction) {
 }
 
 ```
-### The Solution
+it can get ugly, right?
+
+The Solution
+--------
 Args-checker-js is a tiny javascript object that's designed to fix this problem. This has solved mine, so i'm hoping it can solve yours. 
 
 Here's a sample snippet..
 ```javascript
 function run(stringOrNumber, anObject, aFunction) {
-
+	
+	// by default, if an argument is not of the right type, Exceptions will be thrown.
 	args.expect(arguments, ['string|number', 'object', 'function']);
 	
 	// arguments are now valid. do something here..
@@ -67,12 +72,12 @@ var args = require('args-checker');
 
 API
 --------
-##### `args.expect([function arguments], [expectations], callback)`
+#### args.expect([function arguments], [expectations], callback)
 
 * **function arguments** - The [arguments] object is an Array-like object corresponding to the arguments passed to a function
 * **expectations** - An array of strings which corresponds the the expected arguments. Valid expectations are the following: `object`, `function`, `string`, `number`, `boolean` and `*`
-* **callback** - if callback function was passed, args-checker will no longer throw 
-   appropriate ArgumentExceptions.
+* **callback** - if callback function was specified, args-checker will no longer throw 
+   appropriate Exceptions, but all the information regarding the arguments will be on the callback object
 
 See **[Examples]**
 
