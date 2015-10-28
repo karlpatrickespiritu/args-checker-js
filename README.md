@@ -4,9 +4,12 @@
 
 a lightweight function's arguments checker in javascript.
 
-### Version
+Version
+--------
 1.0.1
-### Installation
+
+Installation
+--------
 
 via [npm]
 ```sh
@@ -16,6 +19,7 @@ via [bower]
 ```sh
 $ bower install args-checker-js
 ```
+
 ### The Problem
 We all know javascript doesn't support strict typing unlike other languages. So if a function, like the one shown below, expects it's arguments to be of certain types, we must implement type checking inside the function to make sure that the arguments are of valid types. This type checking can easily make our code too long. And imagine if the function expects too many arguments (although it's a bad practice)?
 
@@ -35,6 +39,7 @@ function run(stringOrNumber, anObject, aFunction) {
 	
 	// arguments are now valid. do something here..
 }
+
 ```
 ### The Solution
 Args-checker-js is a tiny javascript object that's designed to fix this problem. This has solved mine, so i'm hoping it can solve yours. 
@@ -49,7 +54,8 @@ function run(stringOrNumber, anObject, aFunction) {
 }
 ```
 
-### Usage
+Usage
+--------
 for web projects, include args-checker.
 ```html
 <script src="dist/args-checker.min.js"></script>
@@ -59,8 +65,8 @@ for node projects, require args-checker.
 var args = require('args-checker');
 ```
 
-### API
-
+API
+--------
 ##### `args.expect([function arguments], [expectations], callback)`
 
 * **function arguments** - The [arguments] object is an Array-like object corresponding to the arguments passed to a function
@@ -70,11 +76,13 @@ var args = require('args-checker');
 
 See **[Examples]**
 
-### Maintainers
+Maintainers
+--------
  - [@karlpartrickespiritu]
  - and [contributors]
  
-### License
+License
+--------
 (C) [Karl Patrick Espiritu] 2015, released under the MIT license
 
 [Examples]: <https://github.com/karlpatrickespiritu/args-checker-js/tree/master/samples>
