@@ -95,5 +95,5 @@ License
 [contributors]: <https://github.com/karlpatrickespiritu/args-checker-js/graphs/contributors>
 [npm]:  <https://nodejs.org/en/>
 [bower]: <http://bower.io>
-[Examples]: <https://github.com/karlpatrickespiritu/args-checker-js/tree/master/samples>
+[Examples]: <https://github.com/karlpatrickespiritu/args-checker-js/blob/master/samples/sample.js>
 [arguments]: <https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/arguments>
