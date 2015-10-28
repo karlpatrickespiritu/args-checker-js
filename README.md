@@ -61,13 +61,8 @@ function run(stringOrNumber, anObject, aFunction) {
 
 Usage
 --------
-for web projects, include args-checker.
 ```html
-<script src="dist/args-checker.min.js"></script>
-```
-for node projects, require args-checker.
-```javascript
-var args = require('args-checker');
+<script src="args-checker/dist/args-checker.min.js"></script>
 ```
 
 API
