@@ -75,9 +75,8 @@ API
 #### args.expect([function arguments], [expectations], callback)
 
 * **function arguments** - The [arguments] object is an Array-like object corresponding to the arguments passed to a function
-* **expectations** - An array of strings which corresponds the the expected arguments. Valid expectations are the following: `object`, `function`, `string`, `number`, `boolean` and `*`
-* **callback** - if callback function was specified, args-checker will no longer throw 
-   appropriate Exceptions, but all the information regarding the arguments will be on the callback object
+* **expectations** - An array of strings which corresponds the the expected [arguments]. Valid syntax for expectations are any the following: `object`, `function`, `string`, `number`, `boolean` and `*`. An argument may contain multiple expectations: `args.expect(arguments, ['string|object|function|number']);`. The `*` expectation means that an argument expects any data type, it can also be used if an argument may be optional.
+* **callback** - if callback function was specified, args-checker will no longer throw exceptions if an error was found. This function receives a single parameter: The results object which contains all the information regarding the [arguments] passed during runtime.
 
 See **[Examples]**
 
