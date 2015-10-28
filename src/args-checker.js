@@ -31,33 +31,33 @@
             /*==== some basic checks =====*/
 
             if (functionArgs === false) {
-                throw new ArgumentException("Function.arguments is required. \n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
+                throw new ArgumentException("Function arguments is required. \n\nFor more info, go to " + gitPagesRepo + "#api");
             }
 
             if (functionArgs.constructor !== Object) {
-                throw new ArgumentException("Function arguments must be an instance of a function's arguments.\n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
+                throw new ArgumentException("Function arguments must be an instance of a function's arguments.\n\nFor more info, go to " + gitPagesRepo + "#api");
             }
 
             if ((expectations === false) || (expectations.length < 1)) {
-                throw new ArgumentException("Expectations are required.\n\nFor more info, go to " + gitPagesRepo + "#expectations");
+                throw new ArgumentException("Expectations are required.\n\nFor more info, go to " + gitPagesRepo + "#api");
             }
 
             if (expectations.constructor !== Array) {
-                throw new ArgumentException("Expectations must be an array of string expectations, " + typeof expectations + " was passed.\n\nFor more info, go to " + gitPagesRepo + "#expectations");
+                throw new ArgumentException("Expectations must be an array of string expectations, " + typeof expectations + " was passed.\n\nFor more info, go to " + gitPagesRepo + "#api");
             }
 
             /*==== check if expectations are valid. ====*/
 
             for (var i = 0; i <= (expectations.length - 1); i++) {
                 if (typeof expectations[i] !== 'string') {
-                    throw new ArgumentException("Expectations must only contain valid string expectations, " + typeof expectations[i] + " was detected - `" + expectations[i] + "`. \n\nFor more info, go to " + gitPagesRepo + "#expectations");
+                    throw new ArgumentException("Expectations must only contain valid string expectations, " + typeof expectations[i] + " was detected - `" + expectations[i] + "`. \n\nFor more info, go to " + gitPagesRepo + "#api");
                 }
 
                 var argumentExpectations = expectations[i].split('|');
 
                 for (var j = 0; j <= (argumentExpectations.length - 1); j++) {
                     if (!validExpectation(argumentExpectations[j])) {
-                        throw new ArgumentException("A malformed string of expectation was detected - `" + argumentExpectations[j] + "`. \n\nFor more info, go to " + gitPagesRepo + "#expectations");
+                        throw new ArgumentException("A malformed string of expectation was detected - `" + argumentExpectations[j] + "`. \n\nFor more info, go to " + gitPagesRepo + "#api");
                     }
                 }
             }
@@ -65,11 +65,11 @@
             /*==== check expectations would pass ====*/
 
             if (functionArgs.length < 1) {
-                throw new ArgumentException("There we\'re no arguments passed. Function expects arguments to be: (" + expectations.toString().split(',').join(', ') + "). \n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
+                throw new ArgumentException("There we\'re no arguments passed. Function expects arguments to be: (" + expectations.toString().split(',').join(', ') + "). \n\nFor more info, go to " + gitPagesRepo + "#api");
             }
 
             if (functionArgs.length !== expectations.length) {
-                throw new ArgumentException("The number of function arguments does not match the number of expected arguments. \n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
+                throw new ArgumentException("The number of function arguments does not match the number of expected arguments. \n\nFor more info, go to " + gitPagesRepo + "#api");
             }
 
             for (var i = 0; i <= (functionArgs.length - 1); i++) {
@@ -92,7 +92,7 @@
                     };
 
                     if (callback === false) {
-                        throw new ArgumentException(message + "\n\nFor more info, go to " + gitPagesRepo + "#Function.arguments");
+                        throw new ArgumentException(message + "\n\nFor more info, go to " + gitPagesRepo + "#api");
                     }
                 }
             }
@@ -101,7 +101,7 @@
 
             if (callback !== false) {
                 if (typeof callback !== 'function') {
-                    throw new ArgumentException("Callback function must be a function, " + typeof callback + " was passed. \n\nFor more info, go to " + gitPagesRepo + "#callback-function");
+                    throw new ArgumentException("Callback function must be a function, " + typeof callback + " was passed. \n\nFor more info, go to " + gitPagesRepo + "#api");
                 }
 
                 callback(results);

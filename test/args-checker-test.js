@@ -11,7 +11,7 @@ describe('args', function () {
                 args.expect();
             }
 
-            expect(run).to.throw(new ArgumentException(), /Function.arguments is required./);
+            expect(run).to.throw(new ArgumentException(), /Function arguments is required./);
         })
 
         it('should throw an ArgumentException if first parameter is not a type of Function.arguments', function () {
