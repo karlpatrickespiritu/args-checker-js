@@ -59,6 +59,15 @@ for node projects, require args-checker.
 var args = require('args-checker');
 ```
 
+### API
+
+##### `args.expect([function arguments], [expectations], callback)`
+
+* **function arguments** - The [arguments] object is an Array-like object corresponding to the arguments passed to a function
+* **expectations** - An array of strings which corresponds the the expected arguments. Valid expectations are the following: `object`, `function`, `string`, `number`, `boolean` and `*`
+* **callback** - if callback function was passed, args-checker will no longer throw 
+   appropriate ArgumentExceptions.
+
 See **[Examples]**
 
 ### Maintainers
@@ -74,3 +83,5 @@ See **[Examples]**
 [contributors]: <https://github.com/karlpatrickespiritu/args-checker-js/graphs/contributors>
 [npm]:  <https://nodejs.org/en/>
 [bower]: <http://bower.io>
+[Examples]: <https://github.com/karlpatrickespiritu/args-checker-js/tree/master/samples>
+[arguments]: <https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Functions/arguments>
