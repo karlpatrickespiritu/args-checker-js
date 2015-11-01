@@ -104,6 +104,8 @@ describe('args', function () {
                 args.expect(arguments, ['string|number', 'object', 'function|boolean'], function(results) {
                     expect(results).to.be.object;
                     expect(results).have.keys(['errors', 'passed'])
+                    expect(results.errors.passedDataType).to.be.an('undefined');
+                    expect(results.errors.passedData).to.be.an('undefined');
                 });
             }
 
