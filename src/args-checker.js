@@ -84,7 +84,7 @@
 
                     // add results
                     results.passed = false;
-                    results.errors['argument ' + (i += 1)] = {
+                    results.errors['argument ' + (i + 1)] = {
                         passedData: functionArgs[i],
                         passedDataType: typeof functionArgs[i],
                         expects: argumentExpectations,
