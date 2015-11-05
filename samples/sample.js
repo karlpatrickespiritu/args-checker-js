@@ -9,7 +9,7 @@
      * @param {function/object}
      * @param {number}
      */
-    function run(booleanOrString, anyDataType, functionOrObject, aNumber) {
+    function run(booleanOrString, anyDataType, functionOrObject, aNumber, anArray) {
         /*
         * if expectations aren't met, args checker will throw appropriate exceptions
         * notifying the user regarding the errors of the arguments.
@@ -38,7 +38,7 @@
      * @param {boolean}
      * @param {mixed/optional}
      */
-    function run2(stringOrFunction, number, boolean, anyDataType) {
+    function run2(stringOrFunction, number, boolean, anyDataType, anObject) {
         /*
         * If you don't want args-checker to throw errors, just simply pass a true value
         * on the third parameter. Or you can pass a callback function to get the results/errors
