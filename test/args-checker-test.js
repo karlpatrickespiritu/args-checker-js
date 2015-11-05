@@ -74,29 +74,45 @@ describe('args', function () {
 
         it('should throw appropriate ArgumentException depending on what the argument expectations are and arguments passed.', function () {
             function run(booleanOrString, anyDataType, functionOrObject, aNumber) {
-                args.expect(arguments, ['boolean|string', '*', 'function|object', 'number'])
+                args.expect(arguments, ['boolean|string', '*', 'function|object', 'number', 'array'])
             }
 
             expect(function() {
-                run({}, 1, 200, false);
+                run({}, 1, 200, false, []);
             }).to.throw(new ArgumentException(), /Argument number 1 must be boolean|string, object was passed./)
 
             expect(function() {
-                run(true, { an: "object" }, 200.00, false);
+                run(true, { an: "object" }, 200.00, false, []);
             }).to.throw(new ArgumentException(), /Argument number 3 must be function|object, number was passed./)
 
             expect(function() {
-                run(true, { an: "object" }, function() {}, false);
+                run(true, { an: "object" }, function() {}, false, []);
             }).to.throw(new ArgumentException(), /Argument number 4 must be number, boolean was passed./)
+
+            expect(function() {
+                run(true, 'abc', {}, 123, {})
+            }).to.throw(new ArgumentException, /Argument number 5 must be array, object was passed./);
         })
 
         it('should not throw exceptions if arguments not valid, but should return an object in the callback function containing error information.', function () {
             (function run(booleanOrString, anyDataType, functionOrObject, aNumber) {
-                args.expect(arguments, ['number', 'string', 'function', 'number|object'], function(results) {
-                    expect(results).to.be.object;
+                args.expect(arguments, ['number', 'string', 'function', 'number|object', 'array|object'], function(results) {
+                    expect(results).to.be.object
                     expect(results).have.keys(['errors', 'passed'])
+                    expect(results.passed).to.not.ok
+
+                    expect(results.errors.argument1.passedData).to.deep.equal({})
+                    expect(results.errors.argument1.passedDataType).to.deep.equal('object')
+                    expect(results.errors.argument1.expects[0]).to.deep.equal('number')
+                    expect(results.errors.argument1.message).to.deep.equal('Argument number 1 must be number, object was passed.')
+
+                    expect(results.errors.argument4.passedData).to.deep.equal([1, 2, 3])
+                    expect(results.errors.argument4.passedDataType).to.deep.equal('array')
+                    expect(results.errors.argument4.expects[0]).to.deep.equal('number')
+                    expect(results.errors.argument4.expects[1]).to.deep.equal('object')
+                    expect(results.errors.argument4.message).to.deep.equal('Argument number 4 must be number|object, array was passed.')
                 })
-            })({}, 'a string', function() {}, [1, 2, 3]);
+            })({}, 'a string', function() {}, [1, 2, 3], {});
         })
 
         it('should not throw exceptions and pass the results object in the callback function', function() {

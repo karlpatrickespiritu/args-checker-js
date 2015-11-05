@@ -73,20 +73,21 @@
             }
 
             for (var i = 0; i <= (functionArgs.length - 1); i++) {
-                var argumentExpectations = expectations[i].split('|');
+                var argumentExpectations = expectations[i].split('|'),
+                    passedDataType = (functionArgs[i].constructor === Array ? 'array': typeof functionArgs[i])
 
                 if (argumentExpectations.indexOf('*') !== -1) {
                     continue;
                 }
 
-                if (argumentExpectations.indexOf(typeof functionArgs[i]) === -1) {
-                    var message = "Argument number " + (i + 1) + " must be " + expectations[i] + ", " + typeof functionArgs[i] + " was passed.";
+                if (argumentExpectations.indexOf(passedDataType) === -1) {
+                    var message = "Argument number " + (i + 1) + " must be " + expectations[i] + ", " + passedDataType + " was passed.";
 
                     // add results
                     results.passed = false;
-                    results.errors['argument ' + (i + 1)] = {
+                    results.errors['argument' + (i + 1)] = {
                         passedData: functionArgs[i],
-                        passedDataType: typeof functionArgs[i],
+                        passedDataType: passedDataType,
                         expects: argumentExpectations,
                         message: message
                     };
@@ -116,7 +117,7 @@
          * @returns {boolean}
          */
         function validExpectation(stringDataType) {
-            return ['object', 'function', 'string', 'number', 'boolean', '*'].indexOf(stringDataType) !== -1;
+            return ['object', 'array', 'function', 'string', 'number', 'boolean', '*'].indexOf(stringDataType) !== -1;
         }
 
         /**
