@@ -1,0 +1,28 @@
+{
+  "name": "args-checker-js",
+  "version": "1.0.3",
+  "homepage": "https://github.com/karlpatrickespiritu/args-checker-js",
+  "authors": [
+    "karlpatrickespiritu <karl.espiritu@corp.mobile.co>"
+  ],
+  "description": "a lightweight function's arguments checker in javascript.",
+  "keywords": [
+    "javascript",
+    "arguments",
+    "arguments",
+    "args",
+    "js",
+    "function",
+    "arguments",
+    "check",
+    "function"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
