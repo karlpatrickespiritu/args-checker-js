@@ -73,7 +73,7 @@ describe('args', function () {
         })
 
         it('should throw appropriate ArgumentException depending on what the argument expectations are and arguments passed.', function () {
-            function run(booleanOrString, anyDataType, functionOrObject, aNumber) {
+            function run(booleanOrString, anyDataType, functionOrObject, aNumber, anArray) {
                 args.expect(arguments, ['boolean|string', '*', 'function|object', 'number', 'array'])
             }
 
@@ -95,7 +95,7 @@ describe('args', function () {
         })
 
         it('should not throw exceptions if arguments not valid, but should return an object in the callback function containing error information.', function () {
-            (function run(booleanOrString, anyDataType, functionOrObject, aNumber) {
+            (function run(booleanOrString, anyDataType, functionOrObject, aNumber, anArrayOrObject) {
                 args.expect(arguments, ['number', 'string', 'function', 'number|object', 'array|object'], function(results) {
                     expect(results).to.be.object
                     expect(results).have.keys(['errors', 'passed'])
