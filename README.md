@@ -1,6 +1,6 @@
 # args-checker-js
 
-[![Build Status](https://travis-ci.org/karlpatrickespiritu/args-checker-js.svg?branch=master)](https://travis-ci.org/karlpatrickespiritu/args-checker-js) [![npm version](https://badge.fury.io/js/args-checker-js.svg)](https://badge.fury.io/js/args-checker-js)
+[![Build Status](https://travis-ci.org/karlpatrickespiritu/args-checker-js.svg?branch=master)](https://travis-ci.org/karlpatrickespiritu/args-checker-js) [![npm version](https://badge.fury.io/js/args-checker-js.svg)](https://badge.fury.io/js/args-checker-js) [![Downloads](http://img.shields.io/npm/dm/args-checker-js.svg)](https://www.npmjs.com/package/args-checker-js)
 
 a lightweight function's arguments checker in javascript.
 
