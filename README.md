@@ -11,8 +11,9 @@ Version
 Installation
 --------
 via [npm]
-
-[![NPM](https://nodei.co/npm/args-checker-js.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/args-checker-js/)
+```sh
+$ npm install args-checker-js
+```
 
 via [bower]
 ```sh
