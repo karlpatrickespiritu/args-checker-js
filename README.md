@@ -4,10 +4,6 @@
 
 a lightweight function's arguments checker in javascript.
 
-Version
---------
-1.1.0
-
 Installation
 --------
 via [npm]
