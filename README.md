@@ -4,6 +4,9 @@
 
 a lightweight function's arguments checker in javascript.
 
+NO LONGER MAINTAINED (ES6 has this already)
+--------
+
 Installation
 --------
 via [npm]
